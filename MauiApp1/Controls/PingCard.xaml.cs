@@ -1,4 +1,3 @@
-using PingWall.Business;
 using PingWall.ViewModel;
 
 namespace PingWall.Controls;
