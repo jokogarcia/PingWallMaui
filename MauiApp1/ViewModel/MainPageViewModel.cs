@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PingWall.Controls;
+using PingWall.Helpers;
 using PingWall.Services;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,16 @@ namespace PingWall.ViewModel
     public partial class MainPageViewModel : BaseViewModel
     {
         IHostDTORepository _repo;
+        IPingHistoryRepository _historyRepo;
         Task initTask;
-        public MainPageViewModel(IHostDTORepository repo)
+        public MainPageViewModel(IHostDTORepository repo, IPingHistoryRepository historyRepo)
         {
             Title = "Ping Wall";
             _repo = repo;
+            _historyRepo = historyRepo;
             initTask = Init();
-            
+            MessagingCenter.Subscribe<object>(this, MessagingCenterMsssages.ADD_NEW_BLANK_CARD,_=> AddBlankCard());
+
         }
         async Task Init()
         {
@@ -31,7 +35,7 @@ namespace PingWall.ViewModel
         {
             foreach (var ping in await _repo.GetAll())
             {
-                var viewModel = new SinglePingViewModel(new PingService(), _repo)
+                var viewModel = new SinglePingViewModel(new PingService(), _repo, _historyRepo)
                 {
                     DisplayName = ping.DisplayName,
                     Hostname = ping.Hostname,
@@ -45,7 +49,7 @@ namespace PingWall.ViewModel
         }
         void AddBlankCard()
         {
-            var blankViewModel = new SinglePingViewModel(new PingService(), _repo)
+            var blankViewModel = new SinglePingViewModel(new PingService(), _repo, _historyRepo)
             {
 
                 IntervalMiliseconds = 1500,
@@ -59,5 +63,6 @@ namespace PingWall.ViewModel
         {
             MessagingCenter.Send<SinglePingViewModel>(viewModel, Helpers.MessagingCenterMsssages.ADD_NEW_CARD);
         }
+
     }
 }

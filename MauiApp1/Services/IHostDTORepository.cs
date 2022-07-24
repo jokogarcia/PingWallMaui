@@ -14,6 +14,7 @@ namespace PingWall.Services
         Task<int> AddAsync (HostDTO item);
         Task Modify(HostDTO item);
         Task InsertOrUpdateAsync(HostDTO item);
+        Task DeleteAsync(int id);
 
     }
 }

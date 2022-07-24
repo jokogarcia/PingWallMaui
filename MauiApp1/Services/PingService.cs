@@ -26,22 +26,28 @@ namespace PingWall.Services
             pingTaskCompletionSource = new TaskCompletionSource<PingResult>();
             return pingTaskCompletionSource.Task;
         }
+        private void SendResult(PingResult result)
+        {
+            pingTaskCompletionSource.SetResult(result);
+        }
+
 
         private void PingCompleted(object sender, PingCompletedEventArgs e)
         {
             PingResult pingResult = new();
+            pingResult.Received = DateTime.UtcNow;
             if (e.Cancelled)
             {
                 pingResult.IsErrorState = true;
                 pingResult.ErrorMessage = "Ping cancelled";
-                pingTaskCompletionSource.SetResult(pingResult);
+                SendResult(pingResult);
                 return;
             }
             if (e.Error != null)
             {
                 pingResult.IsErrorState = true;
                 pingResult.ErrorMessage = e.Error.Message;
-                pingTaskCompletionSource.SetResult(pingResult);
+                SendResult(pingResult);
                 return;
 
             }
@@ -51,13 +57,13 @@ namespace PingWall.Services
                 pingResult.IsErrorState = false;
                 pingResult.ErrorMessage = String.Empty;
                 pingResult.RoundTripMilliseconds = e.Reply.RoundtripTime;
-                pingTaskCompletionSource.SetResult(pingResult);
+                SendResult(pingResult);
                 return;
             }
             pingResult.IsErrorState = true;
             pingResult.ErrorMessage = e.Reply.Status.ToString();
             pingResult.RoundTripMilliseconds = -1;
-            pingTaskCompletionSource.SetResult(pingResult);
+            SendResult(pingResult);
             return;
         
         }

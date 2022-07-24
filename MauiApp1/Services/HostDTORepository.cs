@@ -18,6 +18,8 @@ namespace PingWall.Services
         }
         async Task Init()
         {
+            if (isInitialized)
+                return;
             // Get an absolute path to the database file
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "PingsDatabase.db");
 
@@ -67,6 +69,11 @@ namespace PingWall.Services
         {
             await CheckIsInitialized();
             await db.InsertOrReplaceAsync(item);
+        }
+        public async Task DeleteAsync(int id)
+        {
+            await CheckIsInitialized();
+            await db.DeleteAsync<HostDTO>(id);
         }
     }
 }

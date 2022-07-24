@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
     {
         MainFlexLayout.Children.Add(new PingCard(viewModel));
     }
-	
+
 	
 
 	

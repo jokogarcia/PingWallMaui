@@ -4,8 +4,10 @@
              xmlns:viewmodel="clr-namespace:PingWall.ViewModel"
              x:DataType="viewmodel:SinglePingViewModel"
              VerticalOptions="Start"
+             xmlns:cc="clr-namespace:PingWall.Controls"
              WidthRequest="250"
              HeightRequest="350"
+             IsVisible="{Binding IsVisible}"
              x:Class="PingWall.Controls.PingCard">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -13,6 +15,7 @@
                 <Setter Property="VerticalOptions" Value="Fill"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="Spacing" Value="20"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -28,35 +31,53 @@
             </Grid>
             <VerticalStackLayout IsVisible="{Binding IsStatusSetup}" 
                                  Style="{StaticResource Key=PingContainer}">
-                <Entry Text="{Binding Hostname}" Placeholder="Host Name"></Entry>
+                <Entry Text="{Binding Hostname}" Placeholder="Host Name" HorizontalOptions="FillAndExpand"></Entry>
                 <Entry Text="{Binding DisplayName}" Placeholder="Display Name"></Entry>
                 <Entry Text="{Binding IntervalMiliseconds}" Placeholder="Interval (ms)"></Entry>
                 <Button Text="Start" Command="{Binding StartCommand}" />
+                <Button Text="Delete" Command="{Binding DeleteCommand}" />
             </VerticalStackLayout>
-            <VerticalStackLayout IsVisible="{Binding IsStatusRunning}"
+            <Grid IsVisible="{Binding IsStatusRunning}">
+                <cc:CustomProgressBarVertical RestColor="Red" 
+                                              ProgressColor="Green" 
+                                              Progress="{Binding SuccessRate}" 
+                                              WidthRequest="10" 
+                                              HorizontalOptions="Start" 
+                                              VerticalOptions="Fill" 
+                                              Margin="10"/>
+                <VerticalStackLayout IsVisible="{Binding IsStatusRunning}"
                                  Style="{StaticResource Key=PingContainer}">
-                <Label Text="{Binding RoundTripMiliseconds, StringFormat='{0} ms'}" FontSize="Large" IsVisible="{Binding IsNotErrorState}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2"
+                    <Label Text="{Binding RoundTripMiliseconds, StringFormat='{0} ms'}" 
+                       FontSize="Large" 
+                       IsVisible="{Binding IsNotErrorState}"
+                       HorizontalOptions="Center"
+                       >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2"
                                               Command="{Binding SetupCommand}"/>
-                    </Label.GestureRecognizers>
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" 
+                        </Label.GestureRecognizers>
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" 
                                  Binding="{Binding FlashingIndicatorIsVisible}"
                                      Value="True">
-                            <Setter Property="TextColor" Value="LightGreen"></Setter>
-                        </DataTrigger>
+                                <Setter Property="TextColor" Value="LightGreen"></Setter>
+                            </DataTrigger>
 
-                    </Label.Triggers>
-                </Label>
-                <Label Text="{Binding ErrorMessage}" FontSize="Medium" TextColor="Red" IsVisible="{Binding IsErrorState}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2"
+                        </Label.Triggers>
+                    </Label>
+                    <Label Text="{Binding ErrorMessage}" FontSize="Medium" TextColor="Red" IsVisible="{Binding IsErrorState}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2"
                                               Command="{Binding SetupCommand}"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="{Binding DisplayName}" FontSize="Medium"/>
-            </VerticalStackLayout>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="{Binding DisplayName}" 
+                       FontSize="Medium"
+                       HorizontalOptions="Center"
+                       />
+                </VerticalStackLayout>
+            </Grid>
+            
         </Grid>
     </Frame>
 </ContentView>
