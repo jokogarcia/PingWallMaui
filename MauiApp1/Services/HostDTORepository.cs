@@ -59,7 +59,7 @@ namespace PingWall.Services
             return await db.GetAsync<HostDTO>(id);
         }
 
-        public async Task Modify(HostDTO item)
+        public async Task UpdateAsync(HostDTO item)
         {
             await CheckIsInitialized();
             await db.UpdateAsync(item);

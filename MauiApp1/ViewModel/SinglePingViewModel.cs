@@ -127,7 +127,15 @@ namespace PingWall.ViewModel
         {
             Status = SinglePingStatus.Running;
             HostDTO dto = new() { DisplayName = this.DisplayName, Hostname = this.Hostname, Id = this.Id, Interval_Miliseconds = this.IntervalMiliseconds };
-            await _repo.InsertOrUpdateAsync(dto);
+            if(dto.Id is null)
+            {
+                this.Id = await _repo.AddAsync(dto);
+            }
+            else
+            {
+                await _repo.UpdateAsync(dto);
+            }
+            
             await PingcCycle();
 
         }
@@ -165,7 +173,11 @@ namespace PingWall.ViewModel
                     FlashIndicator();
                 }
                 await t1;
-                SuccessRate = await _historyRepository.GetSuccessRate((int)this.Id, DateTime.UtcNow - TimeSpan.FromMinutes(60), DateTime.UtcNow);
+                if(this.Id is not null)
+                {
+                    SuccessRate = await _historyRepository.GetSuccessRate((int)this.Id, DateTime.UtcNow - TimeSpan.FromMinutes(60), DateTime.UtcNow);
+                }
+                
                 await waitTask;
 
             }

@@ -12,7 +12,7 @@ namespace PingWall.Services
         Task<List<HostDTO>> GetAll();
         Task<HostDTO> GetAsync(int id);
         Task<int> AddAsync (HostDTO item);
-        Task Modify(HostDTO item);
+        Task UpdateAsync(HostDTO item);
         Task InsertOrUpdateAsync(HostDTO item);
         Task DeleteAsync(int id);
 
