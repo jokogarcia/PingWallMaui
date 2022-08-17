@@ -9,6 +9,7 @@ using System.Net.NetworkInformation;
 
 namespace PingWall.Services
 {
+   
     public class PingService : IPingService
     {
         private Ping pingSender;
@@ -46,7 +47,7 @@ namespace PingWall.Services
             if (e.Error != null)
             {
                 pingResult.IsErrorState = true;
-                pingResult.ErrorMessage = e.Error.Message;
+                pingResult.ErrorMessage = GetInnerMostExceptionMessage(e.Error);
                 SendResult(pingResult);
                 return;
 
@@ -66,6 +67,15 @@ namespace PingWall.Services
             SendResult(pingResult);
             return;
         
+        }
+        string GetInnerMostExceptionMessage(Exception e)
+        {
+            Exception f = e;
+            while (!string.IsNullOrEmpty(f.InnerException?.Message))
+            {
+                f = f.InnerException;
+            }
+            return f.Message;
         }
     }
 }

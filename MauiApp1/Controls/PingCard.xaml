@@ -65,7 +65,13 @@
 
                         </Label.Triggers>
                     </Label>
-                    <Label Text="{Binding ErrorMessage}" FontSize="Medium" TextColor="Red" IsVisible="{Binding IsErrorState}">
+                    <Label Text="{Binding ErrorMessage}" 
+                           FontSize="Medium" 
+                           TextColor="White"
+                           BackgroundColor="Red"
+                           HorizontalOptions="Fill"
+                           HorizontalTextAlignment="Center"
+                           IsVisible="{Binding IsErrorState}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="2"
                                               Command="{Binding SetupCommand}"/>
