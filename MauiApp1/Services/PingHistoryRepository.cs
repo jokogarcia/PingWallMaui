@@ -12,18 +12,31 @@ namespace PingWall.Services
     {
         SQLiteAsyncConnection db;
         private bool isInitialized = false;
-        async Task Init()
+        DateTime nextCleanupTime;
+        private async Task Init()
         {
-            if (isInitialized)
-                return;
+            await DeleteOldRecords();
+            if (isInitialized) return;
+            
             // Get an absolute path to the database file
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "PingsDatabase.db");
 
             db = new SQLiteAsyncConnection(databasePath);
-
             await db.CreateTableAsync<PingResult>();
+            await DeleteOldRecords(DateTime.Now - TimeSpan.FromDays(2), db);
             isInitialized = true;
+        }
+        private async Task DeleteOldRecords()
+        {
+            if (!isInitialized || DateTime.Now < nextCleanupTime) return;
+            await DeleteOldRecords(DateTime.Now - TimeSpan.FromDays(2), db);
+            nextCleanupTime = DateTime.Now + TimeSpan.FromHours(12);
+        }
+       
 
+        private static Task DeleteOldRecords(DateTime cutoffDate,SQLiteAsyncConnection _db)
+        {
+            return _db.Table<PingResult>().DeleteAsync(x => x.Received < cutoffDate);
         }
         public async Task<int> AddAsync(PingResult item)
         {
