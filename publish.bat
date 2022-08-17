@@ -1,0 +1,1 @@
+msbuild C:\src\MauiApp1\MauiApp1\PingWall.csproj /restore /t:publish /p:TargetFramework=net6.0-windows10.0.19041 /p:configuration=release /p:GenerateAppxPackageOnBuild=true /p:Platform=x64
