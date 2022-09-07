@@ -14,7 +14,6 @@ namespace PingWall.Services
         double successRate;
         double averageReturnTime;
         double returnTimeMaxDeviation;
-        static int lastId=0;
         var rand = new Random();
         public async Task<PingResult> Ping(string hostname){
             switch (hostname){
@@ -32,7 +31,6 @@ namespace PingWall.Services
 
             }
             PingResult result = new();
-            result.PingId=lastId++;
             result.RoundTripMilliseconds = averageReturnTime + (rand.NextDouble()-.5)*returnTimeMaxDeviation*2;
             result.IsErrorState = rand.NextDouble() > this.successRate;
             result.ErrorMessage = "Error is error";
