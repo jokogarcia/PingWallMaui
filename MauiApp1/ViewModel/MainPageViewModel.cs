@@ -25,45 +25,44 @@ namespace PingWall.ViewModel
             _repo = repo;
             _historyRepo = historyRepo;
             initTask = Init();
-            MessagingCenter.Subscribe<object>(this, MessagingCenterMsssages.ADD_NEW_BLANK_CARD, _ => AddBlankCard());
+            
             _serviceProvider = serviceProvider;
+            MessagingCenter.Subscribe<object>(this, MessagingCenterMsssages.ADD_NEW_BLANK_CARD, async (_) => await AddNewBlankCard());
         }
         async Task Init()
         {
             await LoadFromDisk();
-            AddBlankCard();
+            
         }
         async Task LoadFromDisk()
         {
             foreach (var ping in await _repo.GetAll())
             {
-                var viewModel = new SinglePingViewModel(_serviceProvider.GetService<IPingService>(), _repo, _historyRepo)
+                bool isBlank = string.IsNullOrEmpty(ping.Hostname);
+                var viewModel = new SinglePingViewModel(_serviceProvider.GetService<IPingService>(), _repo, _historyRepo, ping)
                 {
-                    DisplayName = ping.DisplayName,
-                    Hostname = ping.Hostname,
-                    IntervalMiliseconds = ping.Interval_Miliseconds,
-                    Id = ping.Id,
-                    Status = SinglePingViewModel.SinglePingStatus.Running
+                    Status = isBlank ? SinglePingViewModel.SinglePingStatus.Setup : SinglePingViewModel.SinglePingStatus.Running
                 };
-                viewModel.StartCommand.Execute(null);
+                
+                if(!isBlank) viewModel.StartCommand.Execute(null);
                 AddNewCard(viewModel);
             }
         }
-        void AddBlankCard()
-        {
-            var blankViewModel = new SinglePingViewModel(_serviceProvider.GetService<IPingService>(), _repo, _historyRepo)
-            {
-
-                IntervalMiliseconds = 1500,
-                Id = null,
-                Status = SinglePingViewModel.SinglePingStatus.Blank
-            };
-            AddNewCard(blankViewModel);
-        }
+        
 
         private void AddNewCard(SinglePingViewModel viewModel)
         {
             MessagingCenter.Send<SinglePingViewModel>(viewModel, Helpers.MessagingCenterMsssages.ADD_NEW_CARD);
+        }
+        private async Task AddNewBlankCard()
+        {
+            var pingId = await _repo.AddAsync(new Model.HostDTO { Interval_Miliseconds = 1500 });
+            var ping = await _repo.GetAsync(pingId);
+            var viewModel = new SinglePingViewModel(_serviceProvider.GetService<IPingService>(), _repo, _historyRepo, ping)
+            {
+                Status = SinglePingViewModel.SinglePingStatus.Setup
+            };
+            AddNewCard(viewModel);
         }
 
     }

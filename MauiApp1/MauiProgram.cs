@@ -19,7 +19,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<Services.IPingHistoryRepository, Services.PingHistoryRepository>();
         //Pages
         builder.Services.AddSingleton<MainPage>();
-		builder.Services.AddTransient<SinglePing>();
+		//builder.Services.AddTransient<SinglePing>();
 		
 		//ViewModels
 		builder.Services.AddSingleton<ViewModel.MainPageViewModel>();
