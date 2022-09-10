@@ -14,7 +14,7 @@ namespace PingWall.ViewModel
     {
         public enum SinglePingStatus
         {
-            Blank,
+           
             Setup,
             Running
         }
@@ -22,36 +22,25 @@ namespace PingWall.ViewModel
         IPingService _pingService;
         IHostDTORepository _repo;
         IPingHistoryRepository _historyRepository;
-        public int? Id { get; set; }
-        public SinglePingViewModel(IPingService pingService, IHostDTORepository repo, IPingHistoryRepository historyRepo, HostDTO dto=null)
+        public int Id { get; set; }
+        public SinglePingViewModel(IPingService pingService, IHostDTORepository repo, IPingHistoryRepository historyRepo, HostDTO dto)
         {
             _pingService = pingService;
-            ClearCommand = new Command(ClearCommand_Execute);
             StartCommand = new Command(StartCommand_Execute);
             SetupCommand = new Command(SetupCommand_Execute);
-            NewCommand = new Command(NewCommand_Execute);
             DeleteCommand = new Command(async ()=>await DeleteCommand_Execute());
-            Status = SinglePingStatus.Blank;
+            Status = SinglePingStatus.Setup;
             Title = "Single Ping";
             _repo = repo;
             IsVisible = true;
             _historyRepository = historyRepo;
-           
-            if(dto is null)
-            {   //Default Values
-                Hostname = "";
-                DisplayName = "";
-                IntervalMiliseconds = 1500;
-                Id = null;
-            }
-            else
-            {
-                Hostname = dto.Hostname;
-                DisplayName = dto.DisplayName;
-                IntervalMiliseconds = dto.Interval_Miliseconds;
-                Id = dto.Id;
-            }
-           
+
+            Hostname = dto.Hostname;
+            DisplayName = dto.DisplayName;
+            IntervalMiliseconds = dto.Interval_Miliseconds;
+            Id = (int)dto.Id;
+
+
         }
 
         
@@ -69,12 +58,8 @@ namespace PingWall.ViewModel
 
         [ObservableProperty]
         [AlsoNotifyChangeFor(nameof(IsStatusRunning))]
-        [AlsoNotifyChangeFor(nameof(IsStatusBlank))]
         [AlsoNotifyChangeFor(nameof(IsStatusSetup))]
         SinglePingStatus status;
-
-        [ObservableProperty]
-        Command clearCommand;
 
         [ObservableProperty]
         Command startCommand;
@@ -84,8 +69,6 @@ namespace PingWall.ViewModel
 
         [ObservableProperty]
         Command setupCommand;
-        [ObservableProperty]
-        Command newCommand;
 
         [ObservableProperty]
         Command deleteCommand;
@@ -109,10 +92,7 @@ namespace PingWall.ViewModel
         {
             get => Status == SinglePingStatus.Running;
         }
-        public bool IsStatusBlank
-        {
-            get => Status == SinglePingStatus.Blank;
-        }
+
         public bool IsStatusSetup
         {
             get => Status == SinglePingStatus.Setup;
@@ -136,34 +116,24 @@ namespace PingWall.ViewModel
                 await _repo.UpdateAsync(dto);
             }
             
-            await PingcCycle();
+            await PingCycle();
 
         }
 
-        private void ClearCommand_Execute(object obj)
-        {
-            Status = SinglePingStatus.Blank;
-        }
-        private void NewCommand_Execute(object obj)
-        {
-            int dummy = 0;
-            MessagingCenter.Send<object>(dummy, MessagingCenterMsssages.ADD_NEW_BLANK_CARD);
-            SetupCommand_Execute(obj);
-        }
+        
+        
         private async Task DeleteCommand_Execute()
         {
-            if(this.Id is not null)
-            {
-                await _repo.DeleteAsync((int)this.Id);
-                this.IsVisible = false;
-            }
+            await _repo.DeleteAsync((int)this.Id);
+            this.IsVisible = false;
         }
 
-        async Task PingcCycle()
+        async Task PingCycle()
         {
             while (Status.Equals(SinglePingStatus.Running)) {
                 var waitTask = Task.Delay(IntervalMiliseconds);
                 var result = await _pingService.Ping(Hostname);
+                result.PingId = this.Id;
                 var t1 = _historyRepository.AddAsync(result);
                 IsErrorState = result.IsErrorState;
                 ErrorMessage = result.ErrorMessage;
@@ -173,10 +143,7 @@ namespace PingWall.ViewModel
                     FlashIndicator();
                 }
                 await t1;
-                if(this.Id is not null)
-                {
-                    SuccessRate = await _historyRepository.GetSuccessRate((int)this.Id, DateTime.UtcNow - TimeSpan.FromMinutes(60), DateTime.UtcNow);
-                }
+                SuccessRate = await _historyRepository.GetSuccessRate((int)this.Id, DateTime.UtcNow - TimeSpan.FromMinutes(60), DateTime.UtcNow);
                 
                 await waitTask;
 

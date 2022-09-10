@@ -41,7 +41,8 @@ namespace PingWall.Services
         public async Task<int> AddAsync(HostDTO item)
         {
             await CheckIsInitialized();
-            return await db.InsertAsync(item);
+            var nRows =  await db.InsertAsync(item);
+            return (int)item.Id;
         }
 
         public async Task<List<HostDTO>> GetAll()

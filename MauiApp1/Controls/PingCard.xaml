@@ -21,14 +21,7 @@
     </ContentView.Resources>
     <Frame BorderColor="DarkBlue" Padding="5" Margin="5">
         <Grid>
-            <Grid IsVisible="{Binding IsStatusBlank}"
-                                 Style="{StaticResource Key=PingContainer}">
-                <Button Text="(+)"  
-                        HorizontalOptions="CenterAndExpand" 
-                        VerticalOptions="CenterAndExpand" 
-                        FontSize="Large"
-                        Command="{Binding NewCommand}"/>
-            </Grid>
+
             <VerticalStackLayout IsVisible="{Binding IsStatusSetup}" 
                                  Style="{StaticResource Key=PingContainer}">
                 <Entry Text="{Binding Hostname}" Placeholder="Host Name" HorizontalOptions="FillAndExpand"></Entry>

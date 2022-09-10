@@ -84,7 +84,7 @@ namespace PingWall.Services
         public async Task<double> GetSuccessRate(int id, DateTime startTime, DateTime endTime)
         {
             await Init();
-            var nTotal =  db.Table<PingResult>().Where(item => item.Id == id && item.Received > startTime && item.Received < endTime);
+            var nTotal =  db.Table<PingResult>().Where(item => item.PingId == id && item.Received > startTime && item.Received < endTime);
             var successes = nTotal.Where(item => item.IsErrorState == false);
             var nSuccesses = await successes.CountAsync();
             var nTotals = await nTotal.CountAsync();
