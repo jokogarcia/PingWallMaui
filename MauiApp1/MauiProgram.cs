@@ -17,6 +17,7 @@ public static class MauiProgram
 		builder.Services.AddScoped<Services.IPingService, Services.PingService>();
         builder.Services.AddSingleton<Services.IHostDTORepository, Services.HostDTORepository>();
         builder.Services.AddSingleton<Services.IPingHistoryRepository, Services.PingHistoryRepository>();
+        builder.Services.AddScoped<Services.IFullScreenService, Services.FullScreenService>();
         //Pages
         builder.Services.AddSingleton<MainPage>();
 		//builder.Services.AddTransient<SinglePing>();

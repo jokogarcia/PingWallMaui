@@ -18,17 +18,23 @@ namespace PingWall.ViewModel
         IHostDTORepository _repo;
         IPingHistoryRepository _historyRepo;
         Task initTask;
+        IFullScreenService _fullScreenService;
         IServiceProvider _serviceProvider;
-        public MainPageViewModel(IHostDTORepository repo, IPingHistoryRepository historyRepo, IServiceProvider serviceProvider)
+        [ObservableProperty]
+        Command toggleFullScreenCommand;
+        bool _isFullScreen = false;
+        public MainPageViewModel(IHostDTORepository repo, IPingHistoryRepository historyRepo, IServiceProvider serviceProvider, IFullScreenService fullScreenService)
         {
             Title = "Ping Wall";
             _repo = repo;
             _historyRepo = historyRepo;
             initTask = Init();
-            
+            _fullScreenService = fullScreenService;
             _serviceProvider = serviceProvider;
             MessagingCenter.Subscribe<object>(this, MessagingCenterMsssages.ADD_NEW_BLANK_CARD, async (_) => await AddNewBlankCard());
+            ToggleFullScreenCommand = new Command(ToggleFullScreenCommand_Execute);
         }
+
         async Task Init()
         {
             await LoadFromDisk();
@@ -63,6 +69,18 @@ namespace PingWall.ViewModel
                 Status = SinglePingViewModel.SinglePingStatus.Setup
             };
             AddNewCard(viewModel);
+        }
+        private void ToggleFullScreenCommand_Execute(object obj)
+        {
+            _isFullScreen=!_isFullScreen;
+            if (_isFullScreen)
+            {
+                _fullScreenService.EnterFullScreenMode();
+            }
+            else
+            {
+                _fullScreenService.ExitFullScreenMode();
+            }
         }
 
     }
