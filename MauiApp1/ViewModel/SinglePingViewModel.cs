@@ -116,7 +116,7 @@ namespace PingWall.ViewModel
                 await _repo.UpdateAsync(dto);
             }
             
-            await PingcCycle();
+            await PingCycle();
 
         }
 
@@ -128,11 +128,12 @@ namespace PingWall.ViewModel
             this.IsVisible = false;
         }
 
-        async Task PingcCycle()
+        async Task PingCycle()
         {
             while (Status.Equals(SinglePingStatus.Running)) {
                 var waitTask = Task.Delay(IntervalMiliseconds);
                 var result = await _pingService.Ping(Hostname);
+                result.PingId = this.Id;
                 var t1 = _historyRepository.AddAsync(result);
                 IsErrorState = result.IsErrorState;
                 ErrorMessage = result.ErrorMessage;
@@ -143,7 +144,7 @@ namespace PingWall.ViewModel
                 }
                 await t1;
                 SuccessRate = await _historyRepository.GetSuccessRate((int)this.Id, DateTime.UtcNow - TimeSpan.FromMinutes(60), DateTime.UtcNow);
-
+                
                 await waitTask;
 
             }

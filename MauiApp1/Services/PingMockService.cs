@@ -40,7 +40,7 @@ namespace PingWall.Services
             result.ErrorMessage = "Error is error";
             var roundTripSpan = TimeSpan.FromMilliseconds(thisRoundtrip);
             await Task.Delay(roundTripSpan);
-            result.Received = DateTime.Now;
+            result.Received = DateTime.UtcNow;
             return result;
         }
     }
