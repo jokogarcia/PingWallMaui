@@ -6,7 +6,16 @@
              x:DataType="viewModel:MainPageViewModel"
              Title="{Binding Title}"
              x:Class="PingWall.MainPage">
-    <FlexLayout Direction="Row" Wrap="Wrap" x:Name="MainFlexLayout">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="FullScreen"
+            IconImageSource="fullscreen.png"
+            Order="Primary"
+            Command="{Binding ToggleFullScreenCommand}"
+            Priority="0" />
+    </ContentPage.ToolbarItems>
+    <FlexLayout Grid.Row="1" Wrap="Wrap" x:Name="MainFlexLayout">
 
     </FlexLayout>
+
 </ContentPage>
