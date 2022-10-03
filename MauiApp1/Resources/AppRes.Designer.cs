@@ -97,7 +97,7 @@ namespace MauiApp1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Period (ms).
+        ///   Looks up a localized string similar to Period [ms].
         /// </summary>
         internal static string PingCard_Period {
             get {
@@ -111,6 +111,15 @@ namespace MauiApp1.Resources {
         internal static string PingCard_Start {
             get {
                 return ResourceManager.GetString("PingCard_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It must be a valid URL.
+        /// </summary>
+        internal static string URL_Validation_Message {
+            get {
+                return ResourceManager.GetString("URL_Validation_Message", resourceCulture);
             }
         }
     }

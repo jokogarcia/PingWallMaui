@@ -9,6 +9,6 @@ namespace PingWall.Services
 {
     public interface IPingService
     {
-        Task<PingResult> Ping(string hostname);
+        Task<PingResult> Ping(string hostname, int timeout_ms);
     }
 }

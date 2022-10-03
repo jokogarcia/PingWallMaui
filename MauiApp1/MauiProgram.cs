@@ -1,11 +1,15 @@
-﻿namespace PingWall;
+﻿using CommunityToolkit.Maui;
+
+namespace PingWall;
 
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		builder
+        // Initialise the toolkit
+        builder.UseMauiApp<App>().UseMauiCommunityToolkit();
+        builder
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
@@ -14,7 +18,7 @@ public static class MauiProgram
 			});
 
 		//Services
-		builder.Services.AddScoped<Services.IPingService, Services.PingService>();
+		builder.Services.AddTransient<Services.IPingService, Services.PingService>();
         builder.Services.AddSingleton<Services.IHostDTORepository, Services.HostDTORepository>();
         builder.Services.AddSingleton<Services.IPingHistoryRepository, Services.PingHistoryRepository>();
         //Pages

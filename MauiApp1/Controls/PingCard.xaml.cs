@@ -1,4 +1,5 @@
 using PingWall.ViewModel;
+using System.Text.RegularExpressions;
 
 namespace PingWall.Controls;
 
@@ -9,6 +10,7 @@ public partial class PingCard : ContentView
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
+
 	}
 
 
