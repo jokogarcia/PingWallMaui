@@ -92,7 +92,8 @@ namespace PingWall.Services
             {
                 return 100.0;
             }
-            return 100.0 * nSuccesses / nTotals;
+            var resultPercent = 100.0 * nSuccesses / nTotals;
+            return resultPercent;
         }
     }
 }

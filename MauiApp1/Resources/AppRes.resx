@@ -130,9 +130,12 @@
     <value>Host Name</value>
   </data>
   <data name="PingCard_Period" xml:space="preserve">
-    <value>Period (ms)</value>
+    <value>Period [ms]</value>
   </data>
   <data name="PingCard_Start" xml:space="preserve">
     <value>Start</value>
+  </data>
+  <data name="URL_Validation_Message" xml:space="preserve">
+    <value>It must be a valid URL</value>
   </data>
 </root>

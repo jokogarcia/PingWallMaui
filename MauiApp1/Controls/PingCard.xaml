@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:PingWall.ViewModel"
              xmlns:res="clr-namespace:MauiApp1.Resources"
+             xmlns:irazu="clr-namespace:ValidatableEntry;assembly=ar.com.irazu_ValidatableEntry"
              x:DataType="viewmodel:SinglePingViewModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              VerticalOptions="Start"
@@ -19,6 +20,12 @@
                 <Setter Property="Spacing" Value="20"/>
                 <Setter Property="HorizontalOptions" Value="Fill"/>
             </Style>
+            <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Red" />
+            </Style>
+            <Style x:Key="ValidEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Green" />
+            </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame BorderColor="DarkBlue" Padding="5" Margin="5">
@@ -26,7 +33,23 @@
 
             <VerticalStackLayout IsVisible="{Binding IsStatusSetup}" 
                                  Style="{StaticResource Key=PingContainer}">
-                <Entry Text="{Binding Hostname}" Placeholder="{x:Static res:AppRes.PingCard_HostName}" HorizontalOptions="FillAndExpand"></Entry>
+                
+                <irazu:ValidatableEntry Text="{Binding Hostname, Mode=TwoWay}"
+                                x:Name="HostnameCustomEntry"
+                                Placeholder="{x:Static res:AppRes.PingCard_HostName}"
+                                PlaceholderInsideColor="Green"
+                                FloatingPlaceholderErrorColor="Red"
+                                FloatingPlaceholderNormalColor="Blue"
+                                FloatingPlaceholderFontsize="13"
+                                ValidationMessageColor="Yellow"
+                                FontSize="15"
+                                ValidationChangedCommand="{Binding URL_ValidationChangedCommand}"
+                                ValidationMessageFontSize="8"
+                                >
+                    <irazu:ValidatableEntry.ValidationRules>
+                        <irazu:IsValidUrlRule ErrorMessage="{x:Static res:AppRes.URL_Validation_Message}"/>
+                    </irazu:ValidatableEntry.ValidationRules>
+                </irazu:ValidatableEntry>
                 <Entry Text="{Binding DisplayName}" Placeholder="{x:Static res:AppRes.PingCard_DisplayName}"></Entry>
                 <Entry Text="{Binding IntervalMiliseconds}" Placeholder="{x:Static res:AppRes.PingCard_Period}"></Entry>
                 <Button Text="{x:Static res:AppRes.PingCard_Start}" Command="{Binding StartCommand}" />

@@ -15,7 +15,7 @@ namespace PingWall.Services
         double averageReturnTime;
         double returnTimeMaxDeviation;
         Random rand = new Random();
-        public async Task<PingResult> Ping(string hostname){
+        public async Task<PingResult> Ping(string hostname, int timeout_ms){
             switch (hostname){
                 case "100_100":
                     successRate=1;

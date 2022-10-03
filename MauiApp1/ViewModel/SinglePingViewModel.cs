@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using PingWall.Helpers;
 using PingWall.Model;
 using PingWall.Services;
@@ -26,7 +27,6 @@ namespace PingWall.ViewModel
         public SinglePingViewModel(IPingService pingService, IHostDTORepository repo, IPingHistoryRepository historyRepo, HostDTO dto)
         {
             _pingService = pingService;
-            StartCommand = new Command(StartCommand_Execute);
             SetupCommand = new Command(SetupCommand_Execute);
             DeleteCommand = new Command(async ()=>await DeleteCommand_Execute());
             Status = SinglePingStatus.Setup;
@@ -53,6 +53,8 @@ namespace PingWall.ViewModel
 
         [ObservableProperty]
         string displayName;
+
+        
         [ObservableProperty]
         double successRate;
 
@@ -61,8 +63,6 @@ namespace PingWall.ViewModel
         [AlsoNotifyChangeFor(nameof(IsStatusSetup))]
         SinglePingStatus status;
 
-        [ObservableProperty]
-        Command startCommand;
 
         [ObservableProperty]
         bool isVisible;
@@ -87,6 +87,7 @@ namespace PingWall.ViewModel
 
         [ObservableProperty]
         bool flashingIndicatorIsVisible;
+        private bool urlIsValid;
 
         public bool IsStatusRunning
         {
@@ -102,11 +103,17 @@ namespace PingWall.ViewModel
         {
             Status = SinglePingStatus.Setup;
         }
-
+        private Command startCommand;
+        public Command StartCommand { get => startCommand ??= new Command(StartCommand_Execute, canExecute: _ => urlIsValid); }
         private async void StartCommand_Execute(object obj)
         {
             Status = SinglePingStatus.Running;
-            HostDTO dto = new() { DisplayName = this.DisplayName, Hostname = this.Hostname, Id = this.Id, Interval_Miliseconds = this.IntervalMiliseconds };
+            HostDTO dto = new() { 
+                DisplayName = string.IsNullOrEmpty(this.DisplayName) ? this.Hostname : this.DisplayName, 
+                Hostname = this.Hostname, 
+                Id = this.Id, 
+                Interval_Miliseconds = this.IntervalMiliseconds 
+            };
             if(dto.Id is null)
             {
                 this.Id = await _repo.AddAsync(dto);
@@ -132,7 +139,7 @@ namespace PingWall.ViewModel
         {
             while (Status.Equals(SinglePingStatus.Running)) {
                 var waitTask = Task.Delay(IntervalMiliseconds);
-                var result = await _pingService.Ping(Hostname);
+                var result = await _pingService.Ping(Hostname,IntervalMiliseconds-10);
                 result.PingId = this.Id;
                 var t1 = _historyRepository.AddAsync(result);
                 IsErrorState = result.IsErrorState;
@@ -154,6 +161,14 @@ namespace PingWall.ViewModel
             FlashingIndicatorIsVisible = true;
             await Task.Delay(100);
             FlashingIndicatorIsVisible = false;
+        }
+
+        private Command<bool> url_validationChangedCommand;
+        public Command<bool> URL_ValidationChangedCommand { get => url_validationChangedCommand ??= new Command<bool>(URL_ValidationChangedCommandExecute); }
+        void URL_ValidationChangedCommandExecute(bool isValid)
+        {
+            this.urlIsValid = isValid;
+            StartCommand.ChangeCanExecute();
         }
     }
 }
