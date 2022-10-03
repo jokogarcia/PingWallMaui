@@ -56,7 +56,7 @@
                 <Button Text="{x:Static res:AppRes.PingCard_Delete}" Command="{Binding DeleteCommand}" />
             </VerticalStackLayout>
             <Grid IsVisible="{Binding IsStatusRunning}">
-                <cc:CustomProgressBarVertical RestColor="Red" 
+                <cc:VerticalProgressBar RestColor="Red" 
                                               ProgressColor="Green" 
                                               Progress="{Binding SuccessRate}" 
                                               WidthRequest="10" 

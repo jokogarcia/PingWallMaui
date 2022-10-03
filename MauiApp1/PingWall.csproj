@@ -75,9 +75,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Controls\CustomProgressBarVertical.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Controls\PingCard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

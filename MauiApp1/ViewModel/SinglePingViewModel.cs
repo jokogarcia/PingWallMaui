@@ -108,8 +108,9 @@ namespace PingWall.ViewModel
         private async void StartCommand_Execute(object obj)
         {
             Status = SinglePingStatus.Running;
+            DisplayName = string.IsNullOrEmpty(DisplayName) ? Hostname : DisplayName;
             HostDTO dto = new() { 
-                DisplayName = string.IsNullOrEmpty(this.DisplayName) ? this.Hostname : this.DisplayName, 
+                DisplayName =  this.DisplayName, 
                 Hostname = this.Hostname, 
                 Id = this.Id, 
                 Interval_Miliseconds = this.IntervalMiliseconds 
