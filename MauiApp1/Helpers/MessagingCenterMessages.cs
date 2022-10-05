@@ -10,5 +10,6 @@ namespace PingWall.Helpers
     {
         public static readonly string ADD_NEW_CARD = "ADD_NEW_CARD";
         public static readonly string ADD_NEW_BLANK_CARD = "ADD_NEW_BLANK_CARD";
+        public static readonly string HELP = "HELP";
     }
 }

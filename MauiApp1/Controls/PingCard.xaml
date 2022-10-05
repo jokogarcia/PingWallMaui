@@ -56,14 +56,42 @@
                 <Button Text="{x:Static res:AppRes.PingCard_Delete}" Command="{Binding DeleteCommand}" />
             </VerticalStackLayout>
             <Grid IsVisible="{Binding IsStatusRunning}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <HorizontalStackLayout Grid.Row="0" 
+                                       HorizontalOptions="Fill"
+                                       FlowDirection="RightToLeft"
+                                       Spacing="10"
+                                       >
+                    <ImageButton Source="settings.png"
+                                  
+                                  VerticalOptions="Fill"
+                                  BorderWidth="1"
+                                  Padding="5"
+                                
+                                  BorderColor="Gray"
+                                 Command="{Binding SetupCommand}"/>
+                    <ImageButton Source="delete.png"                                 
+                                  VerticalOptions="Fill"
+                                  BorderWidth="1"
+                                  Padding="5"                                
+                                  BorderColor="Red"
+                                 Command="{Binding DeleteCommand}"/>
+
+                  
+                </HorizontalStackLayout>
                 <cc:VerticalProgressBar RestColor="Red" 
                                               ProgressColor="Green" 
                                               Progress="{Binding SuccessRate}" 
                                               WidthRequest="10" 
                                               HorizontalOptions="Start" 
                                               VerticalOptions="Fill" 
+                                              Grid.Row="1"
                                               Margin="10"/>
                 <VerticalStackLayout IsVisible="{Binding IsStatusRunning}"
+                                     Grid.Row="1"
                                  Style="{StaticResource Key=PingContainer}">
                     <Label Text="{Binding RoundTripMiliseconds, StringFormat='{0} ms'}" 
                        FontSize="Large" 

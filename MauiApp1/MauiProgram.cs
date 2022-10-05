@@ -1,4 +1,11 @@
 ﻿using CommunityToolkit.Maui;
+/*
+ Attributions:
+ - settings.png (Gregor Cresnar Premium)
+ - delete.png (feen)
+- question.png (Freepik)
+- add.ong ( dmitri13)
+ */
 
 namespace PingWall;
 

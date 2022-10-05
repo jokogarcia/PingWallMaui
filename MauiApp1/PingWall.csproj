@@ -49,6 +49,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\delete.png" />
+	  <None Remove="Resources\Images\question.png" />
+	  <None Remove="Resources\Images\settings.png" />
+	  <None Remove="Resources\Raw\help.html" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="ar.com.irazu_ValidatableEntry" Version="1.0.3" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />

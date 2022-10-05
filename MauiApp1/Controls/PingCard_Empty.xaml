@@ -7,11 +7,22 @@
              x:Class="MauiApp1.Controls.PingCard_Empty">
     <Frame BorderColor="DarkBlue" Padding="5" Margin="5">
         <Grid>
-            <Button Text="(+)"  
-                        HorizontalOptions="CenterAndExpand" 
-                        VerticalOptions="CenterAndExpand" 
-                        FontSize="Large"
+            <VerticalStackLayout
+                Spacing="10"
+                MaximumWidthRequest="45"
+                HorizontalOptions="Center" 
+                        VerticalOptions="Center" >
+                <ImageButton Source="add.png"  
+                        BorderColor="Gray"
+                        BorderWidth="1"
                         Clicked="Button_Clicked"/>
+                <ImageButton Source="question.png"  
+                        BorderColor="Gray"
+                        BorderWidth="1"
+                        Clicked="HelpButton_Clicked"/>
+                
+            </VerticalStackLayout>
+            
         </Grid>
         </Frame>
 </ContentView>
