@@ -15,11 +15,18 @@ public partial class MainPage : ContentPage
 		BindingContext = viewModel;
 		
 		MessagingCenter.Subscribe<SinglePingViewModel> (this, MessagingCenterMsssages.ADD_NEW_CARD, AddNewCard);
+        MessagingCenter.Subscribe<object>(this, MessagingCenterMsssages.HELP, OpenHelp);
+
         MainFlexLayout.Children.Add(new PingCard_Empty());
 
     }
 
-    void AddNewCard(SinglePingViewModel viewModel)
+	private async void OpenHelp(object obj)
+	{
+		await Navigation.PushModalAsync(new HelpPage());
+	}
+
+	void AddNewCard(SinglePingViewModel viewModel)
     {
 		var newIndex = MainFlexLayout.Children.Count > 0 ? MainFlexLayout.Children.Count - 1 : 0;
         MainFlexLayout.Children.Insert(
