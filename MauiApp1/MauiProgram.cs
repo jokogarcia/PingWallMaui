@@ -1,5 +1,10 @@
 ﻿using CommunityToolkit.Maui;
-
+/* TODO List
+ Replace icons with FA 
+ Optimize UI for Darkmode and LightMode
+ Add tooltips
+ Publish again
+ */
 
 namespace PingWall;
 
