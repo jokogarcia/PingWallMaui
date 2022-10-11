@@ -2,7 +2,7 @@ using PingWall.Helpers;
 using PingWall.ViewModel;
 using System.Runtime.CompilerServices;
 
-namespace MauiApp1.Controls;
+namespace PingWall.Controls;
 
 public partial class PingCard_Empty : ContentView
 {

@@ -15,9 +15,10 @@ public class HelpPage : ContentPage
         {
             Priority = 1,
             Order=ToolbarItemOrder.Primary,
-            IconImageSource="delete.png"
+            IconImageSource="back.png",
+            Text="Go Back"
         };
-        backToolbarItem.Clicked += async (sender, args) => { await Navigation.PopModalAsync(); };
+        backToolbarItem.Clicked += async (sender, args) => { await Navigation.PopAsync(); };
         ToolbarItems.Add(
             backToolbarItem
             );

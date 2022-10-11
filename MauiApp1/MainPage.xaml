@@ -6,6 +6,13 @@
              x:DataType="viewModel:MainPageViewModel"
              Title="{Binding Title}"
              x:Class="PingWall.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Help"
+                     Order="Primary"
+                     Priority="1"
+                     IconImageSource="question.png"
+                     Command="{Binding OpenHelpCommand}"/>
+    </ContentPage.ToolbarItems>
     <FlexLayout Direction="Row" Wrap="Wrap" x:Name="MainFlexLayout">
 
     </FlexLayout>

@@ -1,4 +1,4 @@
-﻿using MauiApp1.Controls;
+﻿using PingWall.Controls;
 using PingWall.Controls;
 using PingWall.Helpers;
 using PingWall.Model;
@@ -23,7 +23,7 @@ public partial class MainPage : ContentPage
 
 	private async void OpenHelp(object obj)
 	{
-		await Navigation.PushModalAsync(new HelpPage());
+		await Navigation.PushAsync(new HelpPage());
 	}
 
 	void AddNewCard(SinglePingViewModel viewModel)
