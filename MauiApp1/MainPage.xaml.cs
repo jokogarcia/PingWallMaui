@@ -1,7 +1,5 @@
 ﻿using PingWall.Controls;
-using PingWall.Controls;
 using PingWall.Helpers;
-using PingWall.Model;
 using PingWall.Services;
 using PingWall.ViewModel;
 
