@@ -71,7 +71,7 @@
                                   BorderColor="Gray"
                                  Command="{Binding SetupCommand}">
                         <ImageButton.Source>
-                            <FontImageSource FontFamily="FAS" Glyph="{Static helper:FontAwesomeHelper.Wrench}" Color="Blue" Size="20"/>
+                            <FontImageSource FontFamily="FAS" Glyph="{Static helper:FontAwesomeHelper.Wrench}" Size="20"/>
                         </ImageButton.Source>
                     </ImageButton>
                     <ImageButton 

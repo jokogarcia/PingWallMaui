@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              WidthRequest="250"
              HeightRequest="350"
+             xmlns:cc="clr-namespace:PingWall.Controls"
              xmlns:helper="clr-namespace:PingWall.Helpers"
-    VerticalOptions="Start"
+             VerticalOptions="Start"
              x:Class="PingWall.Controls.PingCard_Empty">
     <Frame BorderColor="DarkBlue" Padding="5" Margin="5">
         <Grid>
@@ -13,14 +14,13 @@
                 MaximumWidthRequest="45"
                 HorizontalOptions="Center" 
                         VerticalOptions="Center" >
-                <ImageButton
+
+                <cc:FAImageButton
                         BorderColor="Gray"
                         BorderWidth="1"
+                        Glyph="{Static helper:FontAwesomeHelper.Plus}"
                         Clicked="Button_Clicked">
-                    <ImageButton.Source>
-                        <FontImageSource FontFamily="FAS" Glyph="{Static helper:FontAwesomeHelper.Plus}" Color="Gray" Size="50"/>
-                    </ImageButton.Source>
-                </ImageButton>
+                </cc:FAImageButton>
                 <!--<ImageButton Source="question.png"  
                         BorderColor="Gray"
                         BorderWidth="1"
