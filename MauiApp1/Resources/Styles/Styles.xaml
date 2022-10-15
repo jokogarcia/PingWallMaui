@@ -151,7 +151,12 @@
         <Setter Property="FontFamily"
                 Value="FAS"
                 />
+        <Setter Property="Size"
+                Value="45"/>
+        <Setter Property="Padding"
+                Value="10"/>
     </Style>
+    
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />

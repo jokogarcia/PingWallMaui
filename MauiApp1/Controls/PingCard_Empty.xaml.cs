@@ -19,4 +19,5 @@ public partial class PingCard_Empty : ContentView
     {
         MessagingCenter.Send<object>(sender, MessagingCenterMsssages.HELP);
     }
+    
 }

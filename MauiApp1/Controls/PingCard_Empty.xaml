@@ -16,16 +16,13 @@
                         VerticalOptions="Center" >
 
                 <cc:FAImageButton
+                    x:Name="FIB"
                         BorderColor="Gray"
                         BorderWidth="1"
                         Glyph="{Static helper:FontAwesomeHelper.Plus}"
                         Clicked="Button_Clicked">
                 </cc:FAImageButton>
-                <!--<ImageButton Source="question.png"  
-                        BorderColor="Gray"
-                        BorderWidth="1"
-                        IsVisible="False"
-                        Clicked="HelpButton_Clicked"/>-->
+
                 
             </VerticalStackLayout>
             
