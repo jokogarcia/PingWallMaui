@@ -1,10 +1,9 @@
 ﻿using CommunityToolkit.Maui;
-/*
- Attributions:
- - settings.png (Gregor Cresnar Premium)
- - delete.png (feen)
-- question.png (Freepik)
-- add.ong ( dmitri13)
+/* TODO List
+ Replace icons with FA 
+ Optimize UI for Darkmode and LightMode
+ Add tooltips
+ Publish again
  */
 
 namespace PingWall;
@@ -22,7 +21,10 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+                fonts.AddFont("Brands-Regular-400.otf", "FAB");
+                fonts.AddFont("Free-Regular-400.otf", "FAR");
+                fonts.AddFont("Free-Solid-900.otf", "FAS");
+            });
 
 		//Services
 		builder.Services.AddTransient<Services.IPingService, Services.PingService>();

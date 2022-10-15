@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using PingWall.Controls;
 using PingWall.Helpers;
@@ -63,6 +64,11 @@ namespace PingWall.ViewModel
                 Status = SinglePingViewModel.SinglePingStatus.Setup
             };
             AddNewCard(viewModel);
+        }
+        [ICommand]
+        private async Task OpenHelp()
+        {
+            MessagingCenter.Send<object>(this, MessagingCenterMsssages.HELP);
         }
 
     }

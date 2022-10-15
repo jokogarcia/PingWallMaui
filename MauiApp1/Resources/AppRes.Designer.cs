@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MauiApp1.Resources {
+namespace PingWall.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MauiApp1.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MauiApp1.Resources.AppRes", typeof(AppRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PingWall.Resources.AppRes", typeof(AppRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

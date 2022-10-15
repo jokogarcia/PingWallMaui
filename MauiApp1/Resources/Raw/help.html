@@ -7,6 +7,34 @@
     <meta name="description" content="" />
 </head>
 <body>
-    <h1>Hello, world!</h1>
+    <h1 id="pingwall">PingWall</h1>
+    <p>
+        The PingWall App is a simple utility for monitoring the availabilty of a network connection. It is meant to be used in
+        monitoring screens at Network Operation Centers and the like. Of course, you may give it any use you want.
+        It uses the ICMP protocol, like the command line utility PING available in just about every operating system.
+    </p>
+    <p><img src="https://www.irazu.com.ar/pingwall/readme-assets/1Blank.png" alt="PingWall blank screen" title="PingWall blank Screen"></p>
+    <p>It is very easy to use. To start, click on the [+] button. </p>
+    <p><img src="https://www.irazu.com.ar/pingwall/readme-assets/2EditMode.png" alt="First item editing" title="First item editing"></p>
+    <p>
+        A new &#39;card&#39; will be created, ready for the information to be entered. Just enter the Hostname (it can be a valid URL or IP address) and the Period. The latter is the time, in milliseconds, between ICMP requests (&quot;pings&quot;). A default value of 1500 is provided. Avoid going to low if you don&#39;t want to overwhelm the connection. You can also specify a Display Name to identify this connection with a user-friendly name.
+        Note: ICMP requests are always sent with 32 bytes of data.
+    </p>
+    <p>When you are ready, just press start.</p>
+    <p><img src="https://www.irazu.com.ar/pingwall/readme-assets/2Running.png" alt="First item running" title="First item running"></p>
+    <p>The card will change, and show the latest response time, in miliseconds. You can also see the Display Name. On the left, there is a vertical &#39;health bar&#39; that shows the percentage of Good vs Bad responses in the last hour (all green = good). Also, you will see every time a ping response arrives, the number of milliseconds will turn momentarily green, this way you can know it is being regularly updated.</p>
+    <p><img src="https://www.irazu.com.ar/pingwall/readme-assets/3Error.png" alt="An error occurred" title="An error occurred"></p>
+    <p>If an error occurrs, a message will appear instead of the response time.</p>
+    <p>You can add as many &#39;cards&#39; as you like to fill your screen (or more if you don&#39;t mind scrolling!). When you close the app and open it again, it will remember the cards you created before and start running immediately).</p>
+    <p>To edit or delete a card that is already running, simply double click or double tap the response time (or error message). It will change to edit mode.</p>
+    <h2>Assets attribution</h2>
+    <p>This application uses assets that are the work of the following persons:</p>\
+    <ul>
+        <li><img src="add.png" /> by dmitri13</li>
+        <li><img src="settings.png" /> by Gregor Cresnar Premium</li>
+        <li><img src="question.png" /> by Freepik</li>
+        <li><img src="delete.png" /> by feen</li>
+        <!--<a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by feen - Flaticon</a>-->
+    </ul>
 </body>
 </html>

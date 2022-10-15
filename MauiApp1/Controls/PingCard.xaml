@@ -2,8 +2,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:PingWall.ViewModel"
-             xmlns:res="clr-namespace:MauiApp1.Resources"
+             xmlns:res="clr-namespace:PingWall.Resources"
              xmlns:irazu="clr-namespace:ValidatableEntry;assembly=ar.com.irazu_ValidatableEntry"
+             xmlns:helper="clr-namespace:PingWall.Helpers"
              x:DataType="viewmodel:SinglePingViewModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              VerticalOptions="Start"
@@ -30,10 +31,9 @@
     </ContentView.Resources>
     <Frame BorderColor="DarkBlue" Padding="5" Margin="5">
         <Grid>
-
             <VerticalStackLayout IsVisible="{Binding IsStatusSetup}" 
                                  Style="{StaticResource Key=PingContainer}">
-                
+
                 <irazu:ValidatableEntry Text="{Binding Hostname, Mode=TwoWay}"
                                 x:Name="HostnameCustomEntry"
                                 Placeholder="{x:Static res:AppRes.PingCard_HostName}"
@@ -65,22 +65,22 @@
                                        FlowDirection="RightToLeft"
                                        Spacing="10"
                                        >
-                    <ImageButton Source="settings.png"
-                                  
-                                  VerticalOptions="Fill"
-                                  BorderWidth="1"
-                                  Padding="5"
-                                
-                                  BorderColor="Gray"
-                                 Command="{Binding SetupCommand}"/>
-                    <ImageButton Source="delete.png"                                 
+                    <cc:FAImageButton  VerticalOptions="Fill"
+                                  Glyph="{Static helper:FontAwesomeHelper.Wrench}"
+                                 Command="{Binding SetupCommand}"
+                                       Size="20"
+                                       Padding="5">
+                    </cc:FAImageButton>
+                    <cc:FAImageButton 
                                   VerticalOptions="Fill"
                                   BorderWidth="1"
                                   Padding="5"                                
                                   BorderColor="Red"
-                                 Command="{Binding DeleteCommand}"/>
+                                  Glyph="{Static helper:FontAwesomeHelper.Trash}" Color="Red" Size="20"
+                                  Command="{Binding DeleteCommand}">
+                    </cc:FAImageButton>
 
-                  
+
                 </HorizontalStackLayout>
                 <cc:VerticalProgressBar RestColor="Red" 
                                               ProgressColor="Green" 
@@ -129,7 +129,7 @@
                        />
                 </VerticalStackLayout>
             </Grid>
-            
+
         </Grid>
     </Frame>
 </ContentView>
