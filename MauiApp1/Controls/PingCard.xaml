@@ -21,39 +21,37 @@
                 <Setter Property="Spacing" Value="20"/>
                 <Setter Property="HorizontalOptions" Value="Fill"/>
             </Style>
-            <Style x:Key="InvalidEntryStyle" TargetType="Entry">
-                <Setter Property="TextColor" Value="Red" />
-            </Style>
-            <Style x:Key="ValidEntryStyle" TargetType="Entry">
-                <Setter Property="TextColor" Value="Green" />
-            </Style>
+            
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame BorderColor="DarkBlue" Padding="5" Margin="5">
         <Grid>
             <VerticalStackLayout IsVisible="{Binding IsStatusSetup}" 
+                                 Spacing="5"
                                  Style="{StaticResource Key=PingContainer}">
 
                 <irazu:ValidatableEntry Text="{Binding Hostname, Mode=TwoWay}"
                                 x:Name="HostnameCustomEntry"
                                 Placeholder="{x:Static res:AppRes.PingCard_HostName}"
-                                PlaceholderInsideColor="Green"
-                                FloatingPlaceholderErrorColor="Red"
-                                FloatingPlaceholderNormalColor="Blue"
-                                FloatingPlaceholderFontsize="13"
-                                ValidationMessageColor="Yellow"
-                                FontSize="15"
-                                ValidationChangedCommand="{Binding URL_ValidationChangedCommand}"
-                                ValidationMessageFontSize="8"
-                                >
+                                ValidationChangedCommand="{Binding URL_ValidationChangedCommand}">
                     <irazu:ValidatableEntry.ValidationRules>
                         <irazu:IsValidUrlRule ErrorMessage="{x:Static res:AppRes.URL_Validation_Message}"/>
                     </irazu:ValidatableEntry.ValidationRules>
                 </irazu:ValidatableEntry>
-                <Entry Text="{Binding DisplayName}" Placeholder="{x:Static res:AppRes.PingCard_DisplayName}"></Entry>
-                <Entry Text="{Binding IntervalMiliseconds}" Placeholder="{x:Static res:AppRes.PingCard_Period}"></Entry>
-                <Button Text="{x:Static res:AppRes.PingCard_Start}" Command="{Binding StartCommand}" />
-                <Button Text="{x:Static res:AppRes.PingCard_Delete}" Command="{Binding DeleteCommand}" />
+                <irazu:ValidatableEntry
+                    Text="{Binding DisplayName}" 
+                    Placeholder="{x:Static res:AppRes.PingCard_DisplayName}">
+                </irazu:ValidatableEntry>
+                <irazu:ValidatableEntry
+                    Text="{Binding IntervalMiliseconds}"
+                    Placeholder="{x:Static res:AppRes.PingCard_Period}">
+                    <irazu:ValidatableEntry.ValidationRules>
+                        <irazu:IsIntRule ErrorMessage="{x:Static res:AppRes.Interval_Validation_Message}"
+                                         MinValue="200"/>
+                    </irazu:ValidatableEntry.ValidationRules>
+                </irazu:ValidatableEntry>
+                <Button Text="{x:Static res:AppRes.PingCard_Start}" Command="{Binding StartCommand}" Margin="5" />
+                <Button Text="{x:Static res:AppRes.PingCard_Delete}" Command="{Binding DeleteCommand}" Margin="5"/>
             </VerticalStackLayout>
             <Grid IsVisible="{Binding IsStatusRunning}">
                 <Grid.RowDefinitions>

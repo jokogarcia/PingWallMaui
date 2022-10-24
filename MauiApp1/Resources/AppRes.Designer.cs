@@ -70,6 +70,15 @@ namespace PingWall.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must be an integer over 200.
+        /// </summary>
+        internal static string Interval_Validation_Message {
+            get {
+                return ResourceManager.GetString("Interval_Validation_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string PingCard_Delete {

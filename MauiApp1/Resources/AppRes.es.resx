@@ -120,6 +120,9 @@
   <data name="AppTitle" xml:space="preserve">
     <value>PingWall</value>
   </data>
+  <data name="Interval_Validation_Message" xml:space="preserve">
+    <value>Debe ser un entero mayor a 200</value>
+  </data>
   <data name="PingCard_Delete" xml:space="preserve">
     <value>Eliminar</value>
   </data>

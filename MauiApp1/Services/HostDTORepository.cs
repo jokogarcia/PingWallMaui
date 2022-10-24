@@ -22,7 +22,8 @@ namespace PingWall.Services
                 return;
             // Get an absolute path to the database file
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "PingsDatabase.db");
-
+            //Uncomment this to clear database:
+            //File.Delete(databasePath);
             db = new SQLiteAsyncConnection(databasePath);
 
             await db.CreateTableAsync<HostDTO>();

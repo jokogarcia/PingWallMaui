@@ -3,6 +3,7 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:local="clr-namespace:PingWall.Controls"
+    xmlns:irazu="clr-namespace:ValidatableEntry;assembly=ar.com.irazu_ValidatableEntry"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Style TargetType="ActivityIndicator">
@@ -144,6 +145,21 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
+    </Style>
+    <Style TargetType="irazu:ValidatableEntry">
+        <Setter Property="FloatingPlaceholderNormalColor"
+                Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}"/>
+        <Setter Property="ValidationMessageColor"
+                Value="{AppThemeBinding Light={StaticResource Secondary}, Dark=Yellow}"/>
+        <Setter Property="FloatingPlaceholderErrorColor"
+                Value="Red"/>
+        <Setter Property="PlaceholderInsideColor"
+                Value="Green"/>
+        <Setter Property="FloatingPlaceholderFontsize" Value="13"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="ValidationMessageFontSize" Value="8"/>
+        
+
     </Style>
     <Style TargetType="local:FAImageButton">
         <Setter Property="Color" 
