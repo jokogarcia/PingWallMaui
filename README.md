@@ -28,6 +28,8 @@ If an error occurrs, a message will appear instead of the response time.
 You can add as many 'cards' as you like to fill your screen (or more if you don't mind scrolling!). When you close the app and open it again, it will remember the cards you created before and start running immediately).
 
 To edit or delete a card that is already running, simply click the *wrench* icon. The card will stop running and go back to edit mode.
+
+The *Garbage* icon will DELETE the card.
 ![The Card Action Icons](https://www.irazu.com.ar/pingwall/readme-assets/4Icons.png "The Card Action Icons")
 
 Hope you find this simple utility helpful!
