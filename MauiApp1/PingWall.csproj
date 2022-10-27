@@ -19,8 +19,8 @@
 		<ApplicationIdGuid>487B9BC3-F768-4F82-81B2-AA4BEB135351</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>2</ApplicationVersion>
+		<ApplicationDisplayVersion>1.3.0</ApplicationDisplayVersion>
+		<ApplicationVersion>4</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -49,10 +49,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\PingWallIcon.scale-100.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.scale-125.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.scale-150.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.scale-200.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.scale-400.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.targetsize-16.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.targetsize-24.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.targetsize-256.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.targetsize-32.png" />
+	  <None Remove="Resources\AppIcon\PingWallIcon.targetsize-48.png" />
 	  <None Remove="Resources\Fonts\Brands-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Free-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Free-Solid-900.otf" />
 	  <None Remove="Resources\Raw\help.html" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Resources\AppIcon\PingWallIcon.scale-100.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.scale-125.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.scale-150.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.scale-200.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.scale-400.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.targetsize-16.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.targetsize-24.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.targetsize-256.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.targetsize-32.png" />
+	  <Content Include="Resources\AppIcon\PingWallIcon.targetsize-48.png" />
 	</ItemGroup>
 
 	<ItemGroup>
