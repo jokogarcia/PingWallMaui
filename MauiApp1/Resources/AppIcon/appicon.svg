@@ -1,93 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   width="456"
-   height="456"
-   viewBox="0 0 456 456"
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 100 100"
    version="1.1"
-   id="svg4"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    sodipodi:docname="appicon.svg"
-   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs8">
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient2119">
-      <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
-         offset="0"
-         id="stop2115" />
-      <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
-         offset="1"
-         id="stop2117" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient2119"
-       id="linearGradient2121"
-       x1="84.340712"
-       y1="260.35263"
-       x2="403.38489"
-       y2="260.35263"
-       gradientUnits="userSpaceOnUse" />
-  </defs>
   <sodipodi:namedview
-     id="namedview6"
+     id="namedview7"
      pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.8223684"
-     inkscape:cx="227.72563"
-     inkscape:cy="233.213"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="418.25365"
+     inkscape:cy="173.94826"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg4" />
-  <rect
-     x="0"
-     y="0"
-     width="456"
-     height="456"
-     fill="#512BD4"
-     id="rect2" />
+     inkscape:current-layer="svg5" />
+  <defs
+     id="defs2" />
   <g
      inkscape:groupmode="layer"
-     id="layer1"
-     inkscape:label="Front">
+     id="layer6"
+     inkscape:label="background">
     <rect
-       style="fill:#ffffff;stroke:none;stroke-width:15.891"
-       id="rect848"
-       width="36.216606"
-       height="427.73093"
-       x="18.65704"
-       y="18.391798" />
-    <rect
-       style="fill:#ffffff;stroke:none;stroke-width:15.891"
-       id="rect848-1"
-       width="36.216606"
-       height="427.73093"
-       x="408"
-       y="18.391798" />
+       style="opacity:1;fill:#c87137;fill-opacity:1;stroke-width:0.201035"
+       id="rect4480"
+       width="100.27708"
+       height="100.2771"
+       x="0.2645838"
+       y="0.26458362" />
   </g>
-  <circle
-     style="fill:#ffffff;stroke:none;stroke-width:15.1181"
-     id="path996"
-     r="46.093864"
-     cy="125.11192"
-     cx="106.45486" />
-  <path
-     style="fill:none;stroke:url(#linearGradient2121);stroke-width:4.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:103.2,4.3;stroke-dashoffset:0"
-     d="M 84.505415,113.58845 C 402.22383,224.43321 402.22383,224.43321 402.22383,224.43321 L 103.71119,407.16245"
-     id="path1907" />
 </svg>

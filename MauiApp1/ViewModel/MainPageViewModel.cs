@@ -66,7 +66,7 @@ namespace PingWall.ViewModel
             AddNewCard(viewModel);
         }
         [ICommand]
-        private async Task OpenHelp()
+        private void OpenHelp()
         {
             MessagingCenter.Send<object>(this, MessagingCenterMsssages.HELP);
         }

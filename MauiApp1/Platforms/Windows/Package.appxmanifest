@@ -7,7 +7,7 @@
 
   <Identity Name="62978Irazu.PingWall" 
 			Publisher="CN=305CF1BF-AF41-4DCE-AD46-FAC0A2F47FB1" 
-			Version="1.0.1.0" />
+			Version="1.0.2.1" />
 
   <Properties>
     <DisplayName>PingWall</DisplayName>
@@ -34,6 +34,11 @@
         BackgroundColor="transparent">
         <uap:DefaultTile Square71x71Logo="$placeholder$.png" Wide310x150Logo="$placeholder$.png" Square310x310Logo="$placeholder$.png" />
         <uap:SplashScreen Image="$placeholder$.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/>
+          <uap:Rotation Preference="landscapeFlipped"/>
+          <uap:Rotation Preference="portrait"/>
+          <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>
