@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 100 100"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="appiconfg.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="418.25365"
+     inkscape:cy="173.94826"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="LeftArrow"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       id="path1408"
+       style="opacity:1;fill:#de8787;fill-opacity:1;stroke-width:0.440078"
+       d="M 34.436798,4.6210094 7.0088717,39.942131 h -0.00186 L 34.435519,75.263253 V 57.801516 H 93.359385 V 22.082748 H 34.436798 Z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="RightArrow"
+     style="display:inline;opacity:1">
+    <path
+       id="path1408-2"
+       style="fill:#008080;fill-opacity:1;stroke-width:0.440078"
+       d="M 65.905653,22.499927 93.33358,57.821048 h 0.0012 L 65.906932,93.142169 V 75.680431 H 6.9830708 V 39.961665 H 65.905653 Z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Intersection"
+     transform="translate(79.930475,-0.6036815)">
+    <path
+       id="path1408-22"
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:0.440078"
+       d="m -14.03041,23.09549 v 17.461983 h -58.883228 l 27.413314,35.301204 V 58.397211 h 58.882711 z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Text"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:16.9333px;display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="31.673498"
+       y="20.108334"
+       id="text4088"
+       transform="skewX(26.417273)"><tspan
+         sodipodi:role="line"
+         id="tspan4086"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.9333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;stroke-width:0.264583"
+         x="31.673498"
+         y="20.108334">PING</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.9333px;display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       x="-25.243443"
+       y="91.01667"
+       id="text4194"
+       transform="skewX(22.060581)"><tspan
+         sodipodi:role="line"
+         id="tspan4192"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.9333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;stroke-width:0.264583"
+         x="-25.243443"
+         y="91.01667">WALL</tspan></text>
+  </g>
+</svg>

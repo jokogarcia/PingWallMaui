@@ -1,0 +1,52 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <title>PingWall App</title>
+</head>
+<body>
+    <div class="container">
+        <h1 style="padding-top:50px;font-size:64pt;" id="pingwall">PingWall</h1>
+        <p style="padding-top:150px;">
+            The PingWall App is a simple utility for monitoring the availabilty of a network connection. It is meant to be used in
+            monitoring screens at Network Operation Centers and the like. Of course, you may give it any use you want.
+            It uses the ICMP protocol, like the command line utility <em>Ping</em>, available in just about every operating system.
+        </p>
+
+        <img class="img-fluid" src="https://www.irazu.com.ar/pingwall/readme-assets/1Blank.png" alt="PingWall blank screen" title="PingWall blank Screen">
+
+        <p>It is very easy to use. To start, click on the [+] button. </p>
+
+        <img class="img-fluid" src="https://www.irazu.com.ar/pingwall/readme-assets/2EditMode.png" alt="First item editing" title="First item editing">
+
+        <p>
+            A new &#39;card&#39; will be created, ready for the information to be entered. Just enter the Hostname (it can be a valid URL or IP address) and the Refresh Period. The latter is the time, in milliseconds, between ICMP requests (&quot;pings&quot;). A default value of 1500 is provided. Avoid going too low if you don&#39;t want to overwhelm the connection (the minimum allowed is 200 ms). You can also specify a Display Name to identify this connection with a user-friendly name.
+            Note: ICMP requests are always sent with 32 bytes of data.
+        </p>
+        <p>When you are ready, just press <em>Start</em>.</p>
+
+        <img class="img-fluid" src="https://www.irazu.com.ar/pingwall/readme-assets/2Running.png" alt="First item running" title="First item running">
+
+        <p>The card will change, and show the latest response time, in miliseconds. You can also see the Display Name. On the left, there is a vertical &#39;health bar&#39; that shows the percentage of Good vs Bad responses in the last hour (all green = all good). Also, you will see every time a ping response arrives, the number of milliseconds will turn momentarily green, this way you can know it is being regularly updated.</p>
+
+        <img class="img-fluid" src="https://www.irazu.com.ar/pingwall/readme-assets/3Error.png" alt="An error occurred" title="An error occurred">
+
+        <p>If an error occurrs, a message will appear instead of the response time.</p>
+        <p>You can add as many &#39;cards&#39; as you like to fill your screen (or more if you don&#39;t mind scrolling!). When you close the app and open it again, it will remember the cards you created before and start running immediately).</p>
+        <p>To edit or delete a card that is already running, simply click the <em>wrench</em> icon. The card will stop running and go back to edit mode.</p>
+        <p>
+            The <em>Garbage</em> icon will DELETE the card.
+
+            <img class="img-fluid" src="https://www.irazu.com.ar/pingwall/readme-assets/4Icons.png" alt="The Card Action Icons" title="The Card Action Icons">
+
+        <p>Hope you find this simple utility helpful!</p>
+    </div>
+
+</body>
+</html>
