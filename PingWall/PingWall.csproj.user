@@ -6,8 +6,8 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
     <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
     <AppxShowAllApps>True</AppxShowAllApps>
-    <_LastSelectedProfileId>MSIX-win10-x86.pubxml</_LastSelectedProfileId>
-    <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
+    <_LastSelectedProfileId>MSIX-win10-x64.pubxml</_LastSelectedProfileId>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
   <ItemGroup>
     <MauiXaml Update="Controls\PingCard.xaml">

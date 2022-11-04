@@ -6,8 +6,8 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity Name="62978Irazu.PingWall" 
-			Publisher="CN=irazu.com.ar" 
-			Version="1.5.3.0" />
+			Publisher="CN=305CF1BF-AF41-4DCE-AD46-FAC0A2F47FB1" 
+			Version="1.5.6.0" />
 
   <Properties>
     <DisplayName>PingWall</DisplayName>
