@@ -30,7 +30,7 @@
                                  Spacing="5"
                                  Style="{StaticResource Key=PingContainer}">
 
-                <irazu:ValidatableEntry Text="{Binding Hostname, Mode=TwoWay}"
+                <irazu:ValidatableEntry Text="{Binding Hostname}"
                                 x:Name="HostnameCustomEntry"
                                 Placeholder="{x:Static res:AppRes.PingCard_HostName}"
                                 ValidationChangedCommand="{Binding URL_ValidationChangedCommand}">
