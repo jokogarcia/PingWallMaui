@@ -151,7 +151,7 @@ namespace PingWall.ViewModel
                     FlashIndicator();
                 }
                 await t1;
-                SuccessRate = await _historyRepository.GetSuccessRate((int)this.Id, DateTime.UtcNow - TimeSpan.FromMinutes(60), DateTime.UtcNow);
+                SuccessRate = 0.01 * await _historyRepository.GetSuccessRate((int)this.Id, DateTime.UtcNow - TimeSpan.FromMinutes(60), DateTime.UtcNow);
                 
                 await waitTask;
 
