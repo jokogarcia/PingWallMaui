@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MauiApp1",
-    "\\MauiApp1\\Controls"
+    "\\PingWall",
+    "\\PingWall\\Model",
+    "\\PingWall\\Services"
   ],
-  "SelectedNode": "\\MauiApp1.sln",
+  "SelectedNode": "\\PingWall.sln",
   "PreviewInSolutionExplorer": false
 }
